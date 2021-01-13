@@ -322,8 +322,9 @@ public class GUI implements ActionListener {
 			daylength = 0;
 			nightlength = 24;
 		}
-		double alt = 90 - lat + delta;
 		
+		double alt = 90 - Math.abs(lat - delta);
+	
 		String daysto = "asd";
 		if (yeart < 2000) {
 			daysto = ("Days till 1.1.2000:  " + dist + "\n");
@@ -369,14 +370,13 @@ public class GUI implements ActionListener {
 		double eotm = (int) Math.floor(EOT * 24 * 60);
 		double eots = (EOT * 24 * 60 - eotm) * 60;
 		
-		System.out.println(eotm + " " + eots);
 		String MSN = ("Mean Solar noon: " + String.format("%2.5f", J) + "\n");
 		String MSA = ("Mean Solar anomaly: " + String.format("%2.5f", M) + "\n");
 		String EoC = ("Equation of center: " + String.format("%2.5f", C) + "\n");
 		String EL = ("Ecliptic longitude: " + String.format("%2.5f", lamb) + "\n");
 		String EoT = ("Equation of time: " + eotm + "m, " + String.format("%2.2f", eots) + "s" + "\n");
 		
-		wynik.setText(rise3 + rise2 + rise1 + rise + Jstars + set + set1 + set2 + set3 + additional + daysto + MSN + MSA + EoC + EL + EoT);
+		wynik.setText(rise3 + rise2 + rise1 + rise + Jstars + set + set1 + set2 + set3 + additional + daysto + MSN + MSA + EoC + EL + EoT);;
 	}
 
 	@Override
